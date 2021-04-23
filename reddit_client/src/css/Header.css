@@ -1,0 +1,4 @@
+header {
+    border-bottom: 3px grey solid;
+    background-color: var(--color-foreground);
+}

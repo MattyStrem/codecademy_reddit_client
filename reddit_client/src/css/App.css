@@ -1,3 +1,13 @@
+:root {
+  --color-background: rgb(209, 209, 209);
+  --color-background-secondary: rgb(235, 235, 235);
+  --color-foreground: rgb(250, 6, 6);
+}
+
+* {
+  border: 1px red solid;
+}
+
 .App {
   text-align: center;
 }
