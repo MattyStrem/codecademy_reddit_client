@@ -11,8 +11,7 @@ function App() {
       <Header />
       <main>
         <Main_Section />        
-      </main>
-      
+      </main>      
     </div>
   );
 }
