@@ -3,16 +3,20 @@ import './css/App.css';
 
 import Header from "./features/header/header"
 import Main_Section from './features/main_section/main_section';
+import Subreddits from './features/subreddits/Subreddits';
 
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header />
       <main>
         <Main_Section />        
-      </main>      
-    </div>
+      </main>    
+      <aside>
+        <Subreddits />
+      </aside>  
+    </>
   );
 }
 

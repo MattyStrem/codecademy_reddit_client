@@ -1,5 +1,5 @@
 header {
-    box-shadow: var(--box-shadows);
+    box-shadow: var(--box-shadow);
     background: var(--color-foreground);
     height: 64px;
     padding: 0 var(--spacing-5);
@@ -11,11 +11,11 @@ header .logo {
     padding: var(--spacing-1) 0;
     display: flex;
     align-items: center;
-    grid-column: 1/2;
+    grid-column: 1/2; 
 }
 
 header .logo-icon {
-    grid-column: 2/3;
+    grid-column: 2/3; 
     margin-right: var(--spacing-1);
     font-size: 2rem;
 }

@@ -1,0 +1,15 @@
+.post-wrapper {
+    display: flex;
+}
+
+.post-container {
+    width: 100%;
+    background-color: var(--color-foreground);
+    margin-bottom: var(--spacing-2);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--radius-2);
+}
+
+.post-title {
+    color: var(--color-text-title);
+}

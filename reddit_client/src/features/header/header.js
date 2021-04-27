@@ -10,7 +10,7 @@ const Header = () => {
         <header>
             <div className="logo">
                 <FaReddit className="logo-icon" />
-                <h3>Reddit Client</h3>
+                <p>Reddit Client</p>
             </div>
         </header>
     )
