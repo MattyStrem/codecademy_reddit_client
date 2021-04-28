@@ -1,0 +1,32 @@
+.subreddits-card {
+    padding-right: var(--spacing-2);
+    margin-right: var(--spacing-2);
+}
+
+.subreddits-card h2 {
+    margin-top: 0;
+    color: var(--color-branding);
+  }
+
+.subreddits-card button {
+    background: none;
+    border:none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    padding: var(--spacing-2);
+    border-radius: var(--radius-1);
+}
+
+.subreddits-list {
+    list-style: none;
+    padding: 0;
+}
+
+.subreddit-icon {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin-right: var(--spacing-2);
+}

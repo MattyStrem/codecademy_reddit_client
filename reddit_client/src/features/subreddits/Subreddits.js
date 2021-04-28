@@ -1,16 +1,50 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Card from '../../components/Card/Card.js'
-import '../../css/Subreddit.css'
-import { selectSubreddit } from '../../store/subredditsSlice.js';
+import '../../css/Subreddits.css'
+
+import { selectSubreddits, fetchSubreddits } from '../../store/subredditsSlice.js';
 
 const Subreddits = () => {
+    const dispatch = useDispatch();
     const subreddits = useSelector(selectSubreddits)
 
+    useEffect(() => {
+        dispatch(fetchSubreddits());
+    }, [dispatch]);
+
     return (
-        <Card className='subreddit-card'>
+        <Card className='subreddits-card'>
             <h2>Subreddits</h2>
+            <ul className='subreddits-list'>
+                {subreddits.map((subreddit) => (
+                    <li 
+                        key={subreddit.id}
+                        
+                    >
+                        <button
+                            type='button'
+                            
+                        >
+                            <img 
+                                className="subreddit-icon"
+                                alt={`${subreddit.display_name}`}
+                                scr={
+                                    subreddit.icon_img ||
+                                    `https://api.adorable.io/avatars/25/${subreddit.display_name}`
+                                }
+                                style={{ border: `3px solid ${subreddit.primary_color}` }}
+                            />
+                            {subreddit.display_name}    
+
+                        </button>
+                    </li>
+                ))}
+               
+                    
+               
+            </ul>
         </Card>
     )
 
