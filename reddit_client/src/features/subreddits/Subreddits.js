@@ -41,13 +41,9 @@ const Subreddits = () => {
                         </button>
                     </li>
                 ))}
-               
-                    
-               
             </ul>
         </Card>
     )
-
 }
 
 export default Subreddits;
