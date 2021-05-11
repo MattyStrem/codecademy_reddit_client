@@ -1,5 +1,9 @@
 import React from 'react';
 
+
+
+import Avatar from '../avatar/avatar.js'
+
 import '../../css/Post.css'
 
 
@@ -11,7 +15,17 @@ const Post = (props) => {
            <div className='post-wrapper'>
                <div className='post-container'>
                    <h3 className='post-title'>{post.title}</h3>
-                   <p className='post-author'>{post.author}</p>
+                   <div className='post-image-container'>
+                       <img src={post.url} alt="" className="post-image" />
+                   </div>
+                   <div className="post-details">
+                        <span className='author-details'>
+                            <Avatar name={post.author} />
+                            <span className='author-username'>{post.author}</span>
+                        </span>
+                        
+                   </div>
+                   
                </div>
                 
            </div>

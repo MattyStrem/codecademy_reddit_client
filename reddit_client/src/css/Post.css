@@ -13,3 +13,13 @@
 .post-title {
     color: var(--color-text-title);
 }
+
+.post-image-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-2);
+}
+
+.post-image-container .post-image {
+    width: 100%;
+}

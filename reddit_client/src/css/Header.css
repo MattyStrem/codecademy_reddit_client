@@ -20,3 +20,24 @@ header .logo-icon {
     font-size: 2rem;
 }
 
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    flex-grow: 1;
+    background: var(--color-branding);
+    border: none;
+    padding: var(--spacing-1) var(--spacing-2);
+    height: max-content;
+    border-radius: var(--radius-1);
+}
+
+.search button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+

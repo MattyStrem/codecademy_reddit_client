@@ -32,6 +32,20 @@ const Main_Section = () => {
 
       return getComments;
     }
+
+    if (error) {
+      return (
+        <div className="error">
+          <h2>Failed to Load Post</h2>
+          <button
+            type="button"
+            onClick={() => dispatch(fetchPosts(selectedSubreddit))}
+          >
+            Try Again
+          </button>
+        </div>
+      )
+    }
     
 
     return (
