@@ -1,5 +1,5 @@
 .comment {
-    background: var(--color-background);
+    background: var(--color-secondary);
     margin: var(--spacing-1) 0;
     padding: var(--spacing-2);
     transition: box-shadow 0.1s ease-in;

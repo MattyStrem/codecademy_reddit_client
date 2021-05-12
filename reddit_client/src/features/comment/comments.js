@@ -19,7 +19,7 @@ const Comment = ( props ) => {
             </div>
             <ReactMarkdown source={comment.body} />
         </div>
-    )
+    );
 }
 
 export default Comment;
