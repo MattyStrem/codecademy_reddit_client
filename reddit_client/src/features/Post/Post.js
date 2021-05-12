@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import moment from 'moment';
 
 import {
     TiArrowUpOutline,
@@ -8,8 +10,8 @@ import {
     TiMessage,
   } from 'react-icons/ti';
 
-
-
+import shortenNumber from '../../utils/shortenNumber';
+import Card from '../../components/Card/Card'
 import Avatar from '../avatar/avatar.js'
 import Comment from '../comment/comments'
 
@@ -19,7 +21,61 @@ import '../../css/Post.css'
 const Post = (props) => {
     const { post, onToggleComments } = props;
 
+    const [voteValue, setVoteValue] = useState(0);
+
+    const onHandleVote = (newValue) => {
+        if (newValue === voteValue) {
+            setVoteValue(0);
+        } else if (newValue === 1) {
+            setVoteValue(1);
+        } else {
+            setVoteValue(-1);
+        }
+    }
+
+    const renderUpVote = () => {
+        if (voteValue === 1) {
+            return <TiArrowUpThick className="icon-action" />
+        }
+        return <TiArrowUpOutline className="icon-action" />
+    }
+
+    const renderDownVote = () => {
+        if (voteValue === -1) {
+            return <TiArrowDownThick className="icon-action" />
+        }
+        return <TiArrowDownOutline className="icon-action" />
+    }
+
+    const getVoteType = () => {
+        if (voteValue === 1) {
+            return "up-vote";
+        }
+        if (voteValue === -1) {
+            return "down-vote";
+        }
+
+        return "";
+    }
+
     const renderComments = () => {
+        if (post.errorComments) {
+            return (
+                <div>
+                    <h3>Error Loading comments</h3>
+                </div>
+            )
+        }
+
+        if (post.loadingComments) {
+            return (
+                <div>
+                    <h3>Loading Comments</h3>
+                </div>
+            )
+        }
+
+
         if (post.showingComments) {
             return (
                 <div>
@@ -29,39 +85,71 @@ const Post = (props) => {
                 </div>
             )
         }
+
+        return null;
     }
 
     return (
         <article key={post.id}>
-           <div className='post-wrapper'>
-               <div className='post-container'>
-                   <h3 className='post-title'>{post.title}</h3>
-                   <div className='post-image-container'>
-                       <img src={post.url} alt="" className="post-image" />
-                   </div>
-                   <div className="post-details">
-                        <span className='author-details'>
-                            <Avatar name={post.author} />
-                            <span className='author-username'>{post.author}</span>
-                        </span>
-                        <span className="post-comments-container">
-                            <button
-                                type="button"
-                                className={`icon-action-button ${
-                                  post.showingComments && 'showing-comments'
-                                }`}
-                                onClick={() => onToggleComments(post.permalink)}
-                                aria-label="Show comments"
-                            >
-                                <TiMessage className="icon-action" />
-                            </button>
-                        </span>
+            <Card>
+                <div className='post-wrapper'>
+                    <div className="post-votes-container">
+                        <button
+                            type="button"
+                            className={`icon-action-button up-vote ${
+                                voteValue === 1 && 'active'
+                              }`}
+                            onClick={() => onHandleVote(1)}
+                            aria-label="Up vote"
+                        >
+                            {renderUpVote()}
+                        </button>
+                        <p className={`post-votes-value ${getVoteType()}`}>
+                            {shortenNumber(post.ups, 1)}
+                        </p>
+                        <button
+                            type="button"
+                            className={`icon-action-button down-vote ${
+                                voteValue === -1 && 'active'
+                              }`}
+                            onClick={() => onHandleVote(-1)}
+                            aria-label="Up vote"
+                        >
+                            {renderDownVote()}
+                        </button>
+                    </div>
+
+
+                    <div className='post-container'>
+                        <h3 className='post-title'>{post.title}</h3>
+                        <div className='post-image-container'>
+                            <img src={post.url} alt="" className="post-image" />
+                        </div>
+                        <div className="post-details">
+                                <span className='author-details'>
+                                    <Avatar name={post.author} />
+                                    <span className='author-username'>{post.author}</span>
+                                </span>
+                                <span>{moment.unix(post.created_utc).fromNow()}</span>
+                                <span className="post-comments-container">
+                                    <button
+                                        type="button"
+                                        className={`icon-action-button ${
+                                        post.showingComments && 'showing-comments'
+                                        }`}
+                                        onClick={() => onToggleComments(post.permalink)}
+                                        aria-label="Show comments"
+                                    >
+                                        <TiMessage className="icon-action" />
+                                    </button>
+                                </span>
+                                
+                        </div>
+                        {renderComments()}
+                    </div>
                         
-                   </div>
-                   {renderComments()}
-               </div>
-                
-           </div>
+                </div>
+           </Card>
         </article>
     )
 }
