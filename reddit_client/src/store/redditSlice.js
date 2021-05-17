@@ -117,7 +117,7 @@ export const selectSelectedSubreddit = (state) => state.reddit.selectedSubreddit
 export const selectFilteredPosts = createSelector(
     [selectPosts, selectSearchTerm],
     (posts, searchTerm) => {
-        if (searchTerm != "") {
+        if (searchTerm !== "") {
             return posts.filter((post) => {
                 post.title.toLowerCase().includes(searchTerm.toLowerCase());
             })
